@@ -1,11 +1,10 @@
 {
-  "name": "@christophhu/ngx-json-form",
-  "version": "1.0.5",
+  "name": "@c44/ngx-json-form",
+  "version": "1.0.0",
   "description": "Create Angular reactive forms by a JSON Schema.",
   "license": "MIT",
   "author": {
-    "name": "Christoph Huschenhoefer",
-    "email": "christoph@nxt.codes"
+    "name": "C 44"
   },
   "keywords": [
     "angular",
@@ -24,11 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ChristophHu/ngx-json-form.git"
+    "url": "https://github.com/c44-org/ngx-json-form.git"
   },
   "bugs": {
-    "url": "https://github.com/ChristophHu/ngx-json-form/issues"
+    "url": "https://github.com/c44-org/ngx-json-form/issues"
   },
-  "homepage": "https://github.com/ChristophHu/ngx-json-form#readme",
+  "homepage": "https://github.com/c44-org/ngx-json-form#readme",
   "sideEffects": false
 }
