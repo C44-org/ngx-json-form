@@ -1,13 +1,13 @@
 {
   "name": "ngx-json-form",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "preprocess": "tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/ngx-json-form/src/lib/tailwind.scss & ng build ngx-json-form",
+    "preprocess": "npx tailwindcss -c ./projects/demo/tailwind.config.js -o ./projects/ngx-json-form/src/lib/tailwind.scss & ng build ngx-json-form",
     "publish": "cd dist/ngx-json-form && npm publish --access public"
   },
   "private": false,
