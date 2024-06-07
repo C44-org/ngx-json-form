@@ -11,6 +11,7 @@ import SignaturePad from 'signature_pad';
 export class PadComponent {
   height: number | undefined
   width: number | undefined
+  @Input() widthInput: number = window.innerWidth
   @Output() signature: EventEmitter<any> = new EventEmitter<any>()
   @Output() cancel: EventEmitter<boolean> = new EventEmitter<boolean>()
   signaturePad!: SignaturePad;
@@ -22,7 +23,7 @@ export class PadComponent {
   constructor() { }
 
   ngOnInit(): void {
-    this.width = window.innerWidth - 8*2*4
+    this.width = this.widthInput - 8*2*4
     this.height = this.width / 3
   }
   ngAfterViewInit() {

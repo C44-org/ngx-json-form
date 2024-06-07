@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, Inject, Injector, Input, OnInit, ViewEncapsulation, forwardRef } from '@angular/core'
+import { AfterContentInit, Component, ElementRef, HostListener, Inject, Injector, Input, OnInit, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core'
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, NgControl, ValidationErrors } from '@angular/forms'
 import { CommonModule } from '@angular/common'
@@ -63,6 +63,10 @@ export class SignatureComponent implements AfterContentInit, ControlValueAccesso
   myImg = new Image();
   // Place link to original base64 image here, then adjust width and height below
 
+  width: number = window.innerWidth
+
+  @ViewChild('hostElement', { static: true }) hostElementRef!: ElementRef;
+
   onTouched = () => {}
   onChange = (_: any | null) => { }
 
@@ -82,12 +86,22 @@ export class SignatureComponent implements AfterContentInit, ControlValueAccesso
     })
   }
 
+  ngAfterViewInit(): void { 
+    this.calcWidth()
+  }
+
+  calcWidth(){
+    const hostElement: HTMLElement = this.hostElementRef.nativeElement;
+    this.width = hostElement.offsetWidth;
+  }
+
   sign(event: any) {
     this.signature = event
     this.onChange(event)
   }
 
   openSignPad() {
+    this.calcWidth()
     this.isShowModal = true
   }
   close() {
@@ -110,5 +124,10 @@ export class SignatureComponent implements AfterContentInit, ControlValueAccesso
   writeValue(value: string): void {
     this.myGroup.patchValue({ value })
     this.signature = value
+  }
+
+  @HostListener('window:orientationchange', ['$event'])
+  onOrientationChange(event: Event) {
+    // for the future
   }
 }

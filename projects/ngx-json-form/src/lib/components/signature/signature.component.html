@@ -1,4 +1,4 @@
-<div class="nxt_signature">
+<div class="nxt_signature" #hostElement>
   <button *ngIf="!signature || signature=='0'" class="nxt_signature_button p-2 w-full font-sans italic text-cemter rounded bg-input text-darker disabled:text-disabled" (click)="openSignPad()" [disabled]="isDisabled">
     unterschreiben
   </button>
@@ -21,7 +21,7 @@
             {{ description }}
           </p>
           <div *ngIf="!signature || signature=='0'">
-            <nxt-pad (signature)="sign($event)" (cancel)="close()"></nxt-pad>
+            <nxt-pad (signature)="sign($event)" (cancel)="close()" [widthInput]="width"></nxt-pad>
           </div>
           <!-- <div *ngIf="signature">
             <img class="nxt_signature_img invert-0" src="{{ signature }}" alt="" srcset="" />
