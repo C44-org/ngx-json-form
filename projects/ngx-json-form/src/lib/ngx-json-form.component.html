@@ -29,6 +29,51 @@
                 </div>
             </ng-container>
 
+            <!-- inputnumber -->
+            <ng-container *ngIf="control.type === 'number'">
+                <div class="nxt_input flex flex-col w-full mt-2" [ngClass]="control.hidden ? 'hidden' : ''">
+                    <label class="nxt_input_label my-2 text-sm leading-none">{{ control.label }}</label>
+                    <div class="relative mt-1 flex items-center">
+                        <input type="{{control.type}}" [formControlName]="control.key" 
+                        [id]="control.key" 
+                        mask="{{control.mask}}" 
+                        class="nxt_input_field w-full p-3 border rounded focus:outline-none text-sm font-medium leading-none disabled:pointer-events-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-nonegdf" 
+                        placeholder="{{control.placeholder}}" />
+                        <!-- <div *ngIf="!control.disabled" class="nxt_input_action_icon absolute h-full flex flex-row inset-y-0 right-2 items-center">
+                            <div class="w-5 ml-2 stroke-2 cursor-pointer" (click)="delete(control.key)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                            </div>
+                        </div> -->
+                        <div *ngIf="!control.disabled" class="nxt_input_action_icon absolute h-full flex flex-row right-6 items-center justify-center">
+                            <div class="grid h-8 w-8 stroke-2 place-items-center cursor-pointer" (click)="minus(control.key)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M5 12l14 0" />
+                                  </svg>
+                            
+                            </div>
+                        </div>
+                        <div *ngIf="!control.disabled" class="nxt_input_action_icon absolute h-full flex flex-row right-0 items-center justify-center">
+                            <div class="grid h-8 w-8 stroke-2 place-items-center cursor-pointer" (click)="plus(control.key)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 5l0 14" />
+                                    <path d="M5 12l14 0" />
+                                  </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('email') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">Es muss sich um eine korrekte Mail-Adresse handeln.</div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('max') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">{{ control.label }} kann maximal {{ control.validators | indexOfObjectValue:'max' }} betragen.</div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('min') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">{{ control.label }} muss mindestens {{ control.validators | indexOfObjectValue:'min' }} betragen.</div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('maxlength') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">{{ control.label }} kann maximal {{ control.validators | indexOfObjectValue:'maxlength' }} Zeichen lang sein.</div> 
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('minlength') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">{{ control.label }} muss mindestens {{ control.validators | indexOfObjectValue:'minlength' }} Zeichen lang sein.</div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('required') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">{{ control.label }} wird benötigt.</div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('invalidZip') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">Falsche Eingabe.</div>
+                    <div *ngIf="dynamicForm.get(control.key)?.hasError('compare') && !dynamicForm.get(control.key)?.untouched" class="px-3 text-red-400 pt-1 pb-2 text-sm">Vergleichserror</div> 
+                </div>
+            </ng-container>
+
             <!-- password -->
             <ng-container *ngIf="control.type === 'password'">
                 <div class="nxt_input flex flex-col w-full mt-2" [ngClass]="control.hidden ? 'hidden' : ''">

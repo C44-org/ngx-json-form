@@ -20,6 +20,24 @@ type InputControl = {
   rules?          : IRule[],
   validators?:    IValidator[]
 }
+
+
+type InputNumberControl = {
+  type:           'number',
+  class?:         string,
+  defaultValue?:  number,
+  disabled?:      boolean,
+  hidden?:        boolean,
+  key:            string,
+  label:          string,
+  mask?:          string,
+  placeholder:    string,
+  dependOnKey?:   string,
+  options?:       any[] | Observable<any[]>,
+  rules?          : IRule[],
+  validators?:    IValidator[]
+}
+
 type OTPControl = {
   type:           'otp',
   class?:         string,
@@ -198,4 +216,4 @@ interface IValidator {
   zipCodeValidator?: boolean
 }
 
-export type GenericControl = InputControl | DependedSelectControl | OTPControl | PasswordControl | PinControl | SelectControl | SearchSelectControl | TextareaControl | CheckboxControl | ToggleControl | RadioControl | DateTimeControl | FileUploadControl | ImageSliderControl | SignatureControl
+export type GenericControl = InputControl | InputNumberControl | DependedSelectControl | OTPControl | PasswordControl | PinControl | SelectControl | SearchSelectControl | TextareaControl | CheckboxControl | ToggleControl | RadioControl | DateTimeControl | FileUploadControl | ImageSliderControl | SignatureControl

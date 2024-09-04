@@ -419,4 +419,16 @@ export class NgxJsonFormComponent {
     this.dynamicForm.get(key)?.markAsTouched()
     this.dynamicForm.get(key)?.updateValueAndValidity()
   }
+  plus(key: string) {
+    this.dynamicForm.get(key)?.setValue(this.dynamicForm.get(key)?.value + 1)
+    this.dynamicForm.get(key)?.markAsDirty()
+    this.dynamicForm.get(key)?.markAsTouched()
+    this.dynamicForm.get(key)?.updateValueAndValidity()
+  }
+  minus(key: string) {
+    this.dynamicForm.get(key)?.setValue(this.dynamicForm.get(key)?.value - 1)
+    this.dynamicForm.get(key)?.markAsDirty()
+    this.dynamicForm.get(key)?.markAsTouched()
+    this.dynamicForm.get(key)?.updateValueAndValidity()
+  }
 }

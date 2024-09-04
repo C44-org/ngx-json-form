@@ -105,6 +105,18 @@ export class AppComponent {
             label: 'id',
             placeholder: '000'
           },
+
+          {
+            type: 'number',
+            class: '',
+            defaultValue: 0,
+            disabled: false,
+            hidden: false,
+            key: 'number',
+            label: 'number',
+            placeholder: '0'
+          },
+
           {
             type: 'input',
             hidden: false,
