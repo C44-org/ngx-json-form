@@ -13,7 +13,7 @@ In die `angular.json` muss das Stylesheet von `ngx-json-form` hinzugefügt werde
 ...
 "styles": [
     ...,
-    "node_modules/@christophhu/ngx-json-form/tailwind.scss"
+    "node_modules/@c44/ngx-json-form/tailwind.scss"
 ],
 ...
 ```
