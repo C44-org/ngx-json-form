@@ -141,6 +141,7 @@ public clickInsideComponent() {
     this.resetArrowKeyActiveElement()
     this.searchText = '' // null
     this.close.emit()
+    this.cdref.detectChanges()
   }
   this.clickedInside = false
 }
